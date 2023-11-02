@@ -6,7 +6,7 @@ As I was reading through the [Multilingual Semantic Search with Cohere and Langc
 
 Since there is no way to add edit suggestions for blog posts, I shared the feedback with the article's author.
 
-It turns out that the world of AI is moving fast, and links to API documentations or Github pages can quickly break.
+It turns out that the world of AI is moving fast, and links to API documentations or Github pages can quickly break. Also, internal links break regularly as the site gets reorganized.
 
 It would be impossible for a documentation team to regularly check all such links. And we can't expect blog post writers to regularly check the validity of the links in their past articles.
 
@@ -27,7 +27,7 @@ The main blog page is the following: https://txt.cohere.com.
 A challenge is that it is using infinite scrolling, so the scraper doesn't have access to the articles not initially loaded.
 By checking the network devtools tab and scrolling, we see that as we scroll, we are calling subsequent pages like this: https://txt.cohere.com/page/2/ until we get to the initial blog post.
 
-There are currently 7 pages, but we can use an infinite loop that increments the page number and break once we reach a 404. So this script will keep working as more pages are added.
+There are currently 7 pages, but we can use an infinite loop that increments the page number and breaks once we reach a 404. So this script will keep working as more pages are added.
 
 Then, for each page we extract all the blog posts (we take all relative links starting with `/` and exclude links starting with `/tag` and `/author` since these are not blog posts).
 

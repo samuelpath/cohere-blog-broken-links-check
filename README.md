@@ -1,6 +1,6 @@
 # Retrieve all broken links from Cohere's blog posts
 
-## The problem
+## The problem 🧐
 
 As I was reading through the [Multilingual Semantic Search with Cohere and Langchain](https://txt.cohere.com/search-cohere-langchain/) article in Cohere's blog, I stumbled into 2 broken links pointing to Langchain’s Chains ([broken link](https://api.python.langchain.com/en/latest/modules/chains.html?ref=txt.cohere.com)) and Indexes ([broken link](https://api.python.langchain.com/en/latest/modules/indexes/getting_started.html?ref=txt.cohere.com)) modules.
 
@@ -12,7 +12,7 @@ It would be impossible for a documentation team to regularly check all such link
 
 So how can we solve that programatically?
 
-## A proposed solution
+## A proposed solution 💡
 
 We can simply scrape all blog posts and check whether links contained in them return a 404 or not.
 
@@ -20,7 +20,7 @@ Then, we can export a CSV containing the list of all broken links and their asso
 
 Using various Python libraries, this is rather trivial.
 
-## The approach
+## The approach 🛠️
 
 The main blog page is the following: https://txt.cohere.com.
 
@@ -35,10 +35,12 @@ Then, for each blog post, we call each link and if we get a 404, we append it to
 
 Then we export all tuples in the `broken_links.csv` file.
 
-## Performance considerations
+The first run on 02/11/23 returned 68 broken links in [broken_links.csv](https://github.com/samuelpath/cohere-blog-broken-links-check/blob/main/broken_links.csv), thus confirming the need for this scraping tool ✨.
+
+## Performance considerations ⚡
 
 Since each HTTP call takes time, we are using 20 parallel worker threads to parallelize the calls. Otherwise it would take way too long.
 
-## How to run the script
+## How to run the script ℹ️
 
 Install the dependencies (`pip install…`) and run the main script in your terminal (for my Python version, it is: `python3.10 main.py`).

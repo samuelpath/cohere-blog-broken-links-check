@@ -36,6 +36,10 @@ Then, for each blog post, we call each link and if we get a 404, we append it to
 
 Then we export all tuples in the `broken_links.csv` file.
 
+## Performance considerations
+
+Since each HTTP call takes time, we are using 20 parallel worker threads to parallelize the calls. Otherwise it would take way too long.
+
 ## How to run the script
 
 Install the dependencies (`pip install…`) and run the main script in your terminal (for my Python version, it is: `python3.10 main.py`).
